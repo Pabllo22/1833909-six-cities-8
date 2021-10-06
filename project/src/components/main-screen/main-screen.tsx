@@ -1,7 +1,9 @@
 import Cards from '../cards/cards';
 
 type MainScreenProps = {
+
   errorsCount: number;
+
 }
 
 function MainScreen({errorsCount}: MainScreenProps): JSX.Element {
