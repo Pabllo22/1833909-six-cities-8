@@ -1,14 +1,11 @@
 import MainScreen from '../main-screen/main-screen';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
-//import FavoritesEmptyScreen from '../favorites-empty-screen/favorites-empty-screen';
 import FavoritesScreen from '../favorites-screen/favorites-screen';
 import LoginScreen from '../login-screen/login-screen';
 import { AppRoute, AuthorizationStatus } from './const';
-//import MainEmptyScreen from '../main-empty-screen/main-empty-screen';
 import PropertyScreen from '../property-screen/property-screen';
-//import PropertyNotLogged from '../property-not-logged-screen/property-not-logged';
-import PrivateRoute from '../privet-route/privet-route';
-import ErrorsScreen from '../errorsScreen/errorsScreen';
+import PrivateRoute from '../private-route/private-route';
+import ErrorsScreen from '../errors-screen/errors-screen';
 
 type AppScreenProps = {
 
