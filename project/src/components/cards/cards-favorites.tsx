@@ -1,25 +1,23 @@
-import {useState} from 'react';
-import {MouseEvent} from 'react';
 import {AnswerCards} from '../../types/card';
-import { Link } from 'react-router-dom';
 
 type AnswerCardsScreen = {
+
   answers: AnswerCards;
+
 }
 
-function Cards(props: AnswerCardsScreen): JSX.Element {
+function CardsFavorites(props: AnswerCardsScreen): JSX.Element {
   const {answers} = props;
   const {offers} = answers;
-  const [userAnswers, cardsItemHoverHandler] = useState([false, false, false, false]);
   return (
     <>
       {offers.map((offer, id) => {
         const keyValue = `${id}-${offer.src}`;
         return (
-          <article key={keyValue} id={`offer-${id}`} onMouseEnter={(event: MouseEvent<HTMLElement>) => {if (event){cardsItemHoverHandler([...userAnswers.slice(0,id), ...userAnswers.slice(id+1)]);}}} className="cities__place-card place-card">
+          <article key={keyValue} className="cities__place-card place-card">
             <div className="cities__image-wrapper place-card__image-wrapper">
               <a href="#">
-                <img className="place-card__image" src={offer.src} width="260" height="200" alt="Place image" />
+                <img className="place-card__image" src={offer.srcSmall} width="260" height="200" alt="Place image" />
               </a>
             </div>
             <div className="place-card__info">
@@ -42,7 +40,7 @@ function Cards(props: AnswerCardsScreen): JSX.Element {
                 </div>
               </div>
               <h2 className="place-card__name">
-                <Link to="/offer/:id">{offer.title}</Link>
+                <a href="#">{offer.title}</a>
               </h2>
               <p className="place-card__type">{offer.type}</p>
             </div>
@@ -53,4 +51,4 @@ function Cards(props: AnswerCardsScreen): JSX.Element {
   );
 }
 
-export default Cards;
+export default CardsFavorites;
