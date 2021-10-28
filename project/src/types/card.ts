@@ -11,16 +11,25 @@ export type RentCards = {
   lat: number;
   lng: number;
 };
-
-export type Point = {  
+export type reviewRooms = {
+  id: number;
+  name: string;
+  src: string;
+  text: string;
+  date: string;
+};
+export type Point = {
   title: string;
   lat: number;
   lng: number;
 };
-
+export type reviewAnswer = {
+  reviewsviews: reviewRooms[];
+};
 export type AnswerCards = {
   offers: RentCards[];
 };
 
 export type Points = Point[];
 export type RentInfo = AnswerCards[];
+export type ReviewInfo = reviewAnswer[];

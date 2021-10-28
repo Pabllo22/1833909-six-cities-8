@@ -2,10 +2,8 @@ import {useState} from 'react';
 import {MouseEvent} from 'react';
 import {AnswerCards} from '../../types/card';
 import { Link } from 'react-router-dom';
-
 type AnswerCardsScreen = {
   answers: AnswerCards;
-
 }
 
 function Cards(props: AnswerCardsScreen): JSX.Element {
