@@ -7,20 +7,22 @@ import PropertyScreen from '../property-screen/property-screen';
 import PrivateRoute from '../private-route/private-route';
 import ErrorsScreen from '../errors-screen/errors-screen';
 import {RentInfo} from '../../types/card';
+import {Points} from '../../types/card';
 
 type AppScreenProps = {
 
   errorsCount: number;
   answersCards: RentInfo;
-
+  points: Points;
+  rooms: RentInfo;
 }
 
-function App({errorsCount, answersCards}: AppScreenProps): JSX.Element {
+function App({errorsCount, answersCards, points, rooms}: AppScreenProps): JSX.Element {
   return (
     <BrowserRouter>
       <Switch>
         <Route exact path={AppRoute.Root}>
-          <MainScreen answersCards={answersCards} errorsCount={errorsCount} />
+          <MainScreen answersCards={answersCards} points={points} rooms={rooms} errorsCount={errorsCount} />
         </Route>
         <Route exact path={AppRoute.Login}>
           <LoginScreen />

@@ -1,15 +1,21 @@
 import OffersCards from '../offers-card/offers-cards';
+import {useState} from 'react';
 import Logo from './logo';
 import {RentInfo} from '../../types/card';
-
+import {AnswerCards} from '../../types/card';
+import {Points} from '../../types/card';
+import {Point} from '../../types/card';
+import Map from './map';
 type MainScreenProps = {
-
   answersCards: RentInfo;
+  rooms: RentInfo;
   errorsCount: number;
-
+  points: Points;
 }
 
-function MainScreen({errorsCount, answersCards}: MainScreenProps): JSX.Element {
+function MainScreen({errorsCount, answersCards, points, rooms}: MainScreenProps): JSX.Element {
+  const [oneRoom] = rooms;
+  const [selectedPoint] = useState<Point | undefined>(undefined);
   return (
     <div className="page page--gray page--main">
       <header className="header">
@@ -100,7 +106,7 @@ function MainScreen({errorsCount, answersCards}: MainScreenProps): JSX.Element {
               </div>
             </section>
             <div className="cities__right-section">
-              <section className="cities__map map"></section>
+              <Map rooms={oneRoom as AnswerCards} points={points} selectedPoint={selectedPoint} />
             </div>
           </div>
         </div>
