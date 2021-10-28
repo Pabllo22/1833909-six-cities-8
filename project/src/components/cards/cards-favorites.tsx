@@ -1,9 +1,6 @@
 import {AnswerCards} from '../../types/card';
-
 type AnswerCardsScreen = {
-
   answers: AnswerCards;
-
 }
 
 function CardsFavorites(props: AnswerCardsScreen): JSX.Element {

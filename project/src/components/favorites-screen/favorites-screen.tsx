@@ -3,11 +3,8 @@ import Logo from '../main-screen/logo';
 import CardsFavorites from '../cards/cards-favorites';
 import {RentInfo} from '../../types/card';
 import {AnswerCards} from '../../types/card';
-
 type CardsOffers = {
-
   answersCards: RentInfo;
-
 }
 function FavoritesScreen({answersCards}:CardsOffers): JSX.Element {
   const [oneCard] = answersCards;

@@ -12,6 +12,4 @@ export type RentCards = {
 export type AnswerCards = {
   offers: RentCards[];
 };
-
-
 export type RentInfo = AnswerCards[];
