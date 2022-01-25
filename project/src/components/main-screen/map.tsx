@@ -50,7 +50,7 @@ function Map(props: MapProps): JSX.Element {
     }
   }, [map, points, selectedPoint]);
 
-  return <section className="cities__map map" ref={mapRef}></section>;
+  return <section className="cities__map property__map map" ref={mapRef}></section>;
 }
 
 export default Map;

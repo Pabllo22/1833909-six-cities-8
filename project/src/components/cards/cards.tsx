@@ -1,21 +1,39 @@
-import {useState} from 'react';
-import {MouseEvent} from 'react';
-import {AnswerCards} from '../../types/card';
-import { Link } from 'react-router-dom';
-type AnswerCardsScreen = {
-  answers: AnswerCards;
-}
 
-function Cards(props: AnswerCardsScreen): JSX.Element {
-  const {answers} = props;
-  const {offers} = answers;
-  const [userAnswers, cardsItemHoverHandler] = useState([false, false, false, false]);
+import { Link } from 'react-router-dom';
+import { Dispatch } from 'redux';
+import { State } from '../../types/state';
+import { connect, ConnectedProps } from 'react-redux';
+//import { useEffect } from 'react';
+import { changeList } from '../../store/action';
+import { RentCards } from '../../types/card';
+import { Actions } from '../../types/action';
+import { offers } from '../../mocks/offers';
+
+const mapStateToProps = ({ name, setRooms }: State) => ({
+  name,
+  setRooms,
+});
+const roomDispatchToProps = (dispatch: Dispatch<Actions>) => ({
+  onRoomChange(setRooms: RentCards[]) {
+    dispatch(changeList(setRooms));
+  },
+});
+
+const connector = connect(mapStateToProps, roomDispatchToProps);
+
+type PropsFromRedux = ConnectedProps<typeof connector>;
+type ConnectedComponentProps = PropsFromRedux;
+
+function Cards(props: ConnectedComponentProps): JSX.Element {
+  const {name, setRooms} = props;
+  const test = offers.rooms.filter( (f) => f.city === name);
+  setRooms.push(...test);
   return (
     <>
-      {offers.map((offer, id) => {
+      {setRooms.map((offer, id) => {
         const keyValue = `${id}-${offer.src}`;
         return (
-          <article key={keyValue} id={`offer-${id}`} onMouseEnter={(event: MouseEvent<HTMLElement>) => {if (event){cardsItemHoverHandler([...userAnswers.slice(0,id), ...userAnswers.slice(id+1)]);}}} className="cities__place-card place-card">
+          <article key={keyValue} id={`offer-${id}`} className="cities__place-card place-card">
             <div className="cities__image-wrapper place-card__image-wrapper">
               <a href="#">
                 <img className="place-card__image" src={offer.src} width="260" height="200" alt="Place image" />
@@ -52,4 +70,6 @@ function Cards(props: AnswerCardsScreen): JSX.Element {
   );
 }
 
-export default Cards;
+export {Cards};
+export default connector(Cards);
+

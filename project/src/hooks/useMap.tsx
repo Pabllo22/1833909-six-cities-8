@@ -4,11 +4,11 @@ import {AnswerCards} from '../types/card';
 
 function useMap(
   mapRef: MutableRefObject<HTMLElement | null>,
-  rooms: AnswerCards,
+  room: AnswerCards,
 ): Map | null {
   const [map, setMap] = useState<Map | null>(null);
-  const {offers} = rooms;
-  const [oneRoom] = offers;
+  const {rooms} = room;
+  const [oneRoom] = rooms;
   useEffect(() => {
     if (mapRef.current !== null && map === null) {
       const instance = new Map(mapRef.current, {

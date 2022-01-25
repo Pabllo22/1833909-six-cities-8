@@ -5,10 +5,10 @@ type AnswerCardsScreen = {
 
 function CardsFavorites(props: AnswerCardsScreen): JSX.Element {
   const {answers} = props;
-  const {offers} = answers;
+  const {rooms} = answers;
   return (
     <>
-      {offers.map((offer, id) => {
+      {rooms.map((offer, id) => {
         const keyValue = `${id}-${offer.src}`;
         return (
           <article key={keyValue} className="cities__place-card place-card">

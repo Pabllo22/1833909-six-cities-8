@@ -1,19 +1,36 @@
-import OffersCards from '../offers-card/offers-cards';
+//import OffersCards from '../offers-card/offers-cards';
 import {useState} from 'react';
 import Logo from './logo';
+import ListCity from '../list-city/list-city';
 import {RentInfo} from '../../types/card';
 import {AnswerCards} from '../../types/card';
 import {Points} from '../../types/card';
 import {Point} from '../../types/card';
+import {AnswerCity} from '../../types/card';
+// import {changeCity} from '../../store/action';
+// import { Dispatch } from 'redux';
+import {State} from '../../types/state';
+// import { Actions } from '../../types/action';
+import { connect, ConnectedProps } from 'react-redux';
+
 import Map from './map';
+//import { Cards } from '../cards/cards';
+import Cards from '../cards/cards';
 type MainScreenProps = {
-  answersCards: RentInfo;
   rooms: RentInfo;
   errorsCount: number;
   points: Points;
+  city: AnswerCity;
 }
+const mapStateToProps = ({ name, setRooms }: State) => ({
+  name,
+  setRooms,
+});
+const connector = connect(mapStateToProps);
+type PropsFromRedux = ConnectedProps<typeof connector>;
+type ConnectedComponentProps = PropsFromRedux & MainScreenProps;
 
-function MainScreen({errorsCount, answersCards, points, rooms}: MainScreenProps): JSX.Element {
+function MainScreen({errorsCount, points, rooms, city  }: ConnectedComponentProps): JSX.Element {
   const [oneRoom] = rooms;
   const [selectedPoint] = useState<Point | undefined>(undefined);
   return (
@@ -48,36 +65,7 @@ function MainScreen({errorsCount, answersCards, points, rooms}: MainScreenProps)
         <div className="tabs">
           <section className="locations container">
             <ul className="locations__list tabs__list">
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Paris</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Cologne</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Brussels</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item tabs__item--active">
-                  <span>Amsterdam</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Hamburg</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Dusseldorf</span>
-                </a>
-              </li>
+              <ListCity city={ city }></ListCity>
             </ul>
           </section>
         </div>
@@ -102,7 +90,7 @@ function MainScreen({errorsCount, answersCards, points, rooms}: MainScreenProps)
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                <OffersCards answersCards={answersCards}/>
+                <Cards />
               </div>
             </section>
             <div className="cities__right-section">
@@ -114,4 +102,5 @@ function MainScreen({errorsCount, answersCards, points, rooms}: MainScreenProps)
     </div>
   );
 }
-export default MainScreen;
+export {MainScreen};
+export default connector(MainScreen);

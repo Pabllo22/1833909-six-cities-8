@@ -1,14 +1,9 @@
 import Cards from '../cards/cards';
-import {RentInfo} from '../../types/card';
-import {AnswerCards} from '../../types/card';
-type CardsOffers = {
-  answersCards: RentInfo;
-}
 
-function OffersCards({answersCards}: CardsOffers): JSX.Element {
-  const [oneCard] = answersCards;
+
+function OffersCards(): JSX.Element {
   return(
-    <Cards answers={oneCard as AnswerCards}/>
+    <Cards />
   );
 }
 export default OffersCards;

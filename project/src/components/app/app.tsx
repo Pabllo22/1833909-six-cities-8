@@ -9,26 +9,29 @@ import ErrorsScreen from '../errors-screen/errors-screen';
 import {RentInfo} from '../../types/card';
 import {Points} from '../../types/card';
 import {ReviewInfo} from '../../types/card';
+import { AnswerCity } from '../../types/card';
+
 type AppScreenProps = {
   answersRevies: ReviewInfo;
   errorsCount: number;
   answersCards: RentInfo;
   points: Points;
   rooms: RentInfo;
+  city: AnswerCity;
 }
 
-function App({errorsCount, answersCards, points, rooms, answersRevies}: AppScreenProps): JSX.Element {
+function App({errorsCount, answersCards, points, rooms, answersRevies, city}: AppScreenProps): JSX.Element {
   return (
     <BrowserRouter>
       <Switch>
         <Route exact path={AppRoute.Root}>
-          <MainScreen answersCards={answersCards} points={points} rooms={rooms} errorsCount={errorsCount} />
+          <MainScreen points={points} rooms={rooms} errorsCount={errorsCount} city={city} />
         </Route>
         <Route exact path={AppRoute.Login}>
           <LoginScreen />
         </Route>
         <Route exact path={AppRoute.Room}>
-          <PropertyScreen answersRevies={answersRevies}/>
+          <PropertyScreen answersCards={answersCards} answersRevies={answersRevies} points={points} rooms={rooms}/>
         </Route>
         <PrivateRoute exact path={AppRoute.FavoritScreen} render={() => <FavoritesScreen  answersCards={answersCards}/>}         authorizationStatus={AuthorizationStatus.Auth} />
         <Route>

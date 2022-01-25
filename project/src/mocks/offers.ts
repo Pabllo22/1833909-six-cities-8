@@ -1,10 +1,11 @@
-import {RentInfo} from '../types/card';
+import {AnswerCards} from '../types/card';
 import {Point} from '../types/card';
 import {ReviewInfo} from '../types/card';
+import {City} from '../types/card';
 
-export const offers: RentInfo = [
+export const offers: AnswerCards[] = [
   {
-    offers: [{
+    rooms: [{
       title: 'Nice, cozy, warm big bed apartment',
       src: 'img/apartment-03.jpg',
       price: 180,
@@ -16,6 +17,7 @@ export const offers: RentInfo = [
       id: 1,
       lat: 52.3909553943508,
       lng: 4.85309666406198,
+      city: 'Amstendarm',
     },{
       title: 'Beautiful & luxurious apartment at great location',
       src: 'img/apartment-01.jpg',
@@ -28,6 +30,7 @@ export const offers: RentInfo = [
       id: 2,
       lat: 52.369553943508,
       lng: 4.85309666406198,
+      city: 'Amstendarm',
     },{
       title: 'Wood and stone place',
       src: 'img/room.jpg',
@@ -40,6 +43,7 @@ export const offers: RentInfo = [
       id: 3,
       lat: 52.3909553943508,
       lng: 4.929309666406198,
+      city: 'Parish',
     },{
       title: 'Canal View Prinsengracht',
       src: 'img/apartment-02.jpg',
@@ -52,6 +56,7 @@ export const offers: RentInfo = [
       id: 4,
       lat: 52.3809553943508,
       lng: 4.939309666406198,
+      city: 'Humburg',
     }],
   },
 ];
@@ -100,7 +105,33 @@ export const review: ReviewInfo = [{
       src: 'img/avatar-max.jpg',
       text: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Incidunt voluptatum impedit officiis aperiam quasi error eos itaque, enim debitis non quod sint ratione rerum voluptatem accusantium dolores, odit minus deleniti.',
       date: 'July 2019',
+    },{
+      id: 5,
+      name: 'Han',
+      src: 'img/avatar-max.jpg',
+      text: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Incidunt voluptatum impedit officiis aperiam quasi error eos itaque, enim debitis non quod sint ratione rerum voluptatem accusantium dolores, odit minus deleniti.',
+      date: 'July 2022',
     },
   ],
 }];
 
+export const citys: City[] = [
+  {
+    name: 'Amsterdam',
+  },
+  {
+    name: 'Paris',
+  },
+  {
+    name: 'Cologne',
+  },
+  {
+    name: 'Brussels',
+  },
+  {
+    name: 'Hamburg',
+  },
+  {
+    name: 'Dusseldorf',
+  },
+];

@@ -10,7 +10,11 @@ export type RentCards = {
   id: number;
   lat: number;
   lng: number;
+  city: string;
 };
+export type City ={
+  name: string;
+}
 export type reviewRooms = {
   id: number;
   name: string;
@@ -27,9 +31,11 @@ export type reviewAnswer = {
   reviewsviews: reviewRooms[];
 };
 export type AnswerCards = {
-  offers: RentCards[];
+  rooms:RentCards[];
 };
 
+export type AnswerCity = City[];
 export type Points = Point[];
 export type RentInfo = AnswerCards[];
 export type ReviewInfo = reviewAnswer[];
+
